@@ -798,15 +798,33 @@
     /* ==========================================================================
        ABOUT ME SECTION & STAT COUNTER CARDS
        ========================================================================== */
+    /* Glowing & Bold Display Typography for About Me */
     .about-section-wrap {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 6rem 0;
+      padding: 7rem 0 6rem 0;
+      position: relative;
+    }
+
+    /* Ambient background glow for About section */
+    .about-ambient-glow {
+      position: absolute;
+      top: 25%;
+      left: 45%;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(208, 255, 113, 0.08) 0%, rgba(208, 255, 113, 0.02) 40%, transparent 70%);
+      pointer-events: none;
+      filter: blur(60px);
+      z-index: 0;
     }
 
     .about-grid-layout {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1.25fr 1fr;
       gap: 3.5rem;
@@ -815,120 +833,323 @@
     }
 
     .about-left-column {
-      max-width: 620px;
+      max-width: 640px;
     }
 
-    .about-right-spacer {
-      width: 100%;
-      height: 440px;
-      visibility: hidden;
-      pointer-events: none;
+    /* Glowing Eyebrow Badge */
+    .about-badge-glow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.45rem 1.15rem;
+      border-radius: 9999px;
+      background: rgba(208, 255, 113, 0.08);
+      border: 1px solid rgba(208, 255, 113, 0.3);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 16px rgba(208, 255, 113, 0.2);
     }
 
-    .about-editorial-text {
+    .about-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+
+    /* Massive Display Heading */
+    .about-massive-heading {
+      font-family: var(--font-display);
+      font-size: clamp(3.8rem, 7.5vw, 6.5rem);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin: 0 0 1.75rem 0;
+    }
+
+    .about-glow-text {
+      color: var(--accent);
+      text-shadow: 0 0 24px var(--accent-glow), 0 0 48px rgba(208, 255, 113, 0.35);
+    }
+
+    .about-dot-accent {
+      color: var(--accent);
+      text-shadow: 0 0 20px var(--accent);
+    }
+
+    /* High-Impact Manifesto Lead */
+    .about-bold-manifesto {
+      font-family: var(--font-body);
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      margin: 0 0 1.5rem 0;
+      text-transform: uppercase;
+    }
+
+    .manifesto-bold-word {
+      color: var(--accent);
+      text-shadow: 0 0 15px rgba(208, 255, 113, 0.3);
+    }
+
+    /* Editorial Narrative Body */
+    .about-editorial-story {
       display: flex;
       flex-direction: column;
-      gap: 1.35rem;
-      margin-bottom: 2.5rem;
+      gap: 1.15rem;
+      margin-bottom: 2rem;
     }
 
-    .about-lead-statement {
-      font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    .about-story-p {
+      font-size: clamp(0.98rem, 1.3vw, 1.1rem);
       font-weight: 400;
-      line-height: 1.45;
-      color: var(--text-muted);
-      letter-spacing: -0.01em;
-      margin: 0;
-    }
-
-    .about-lead-statement strong {
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .about-sub-statement {
-      font-size: clamp(1.02rem, 1.4vw, 1.18rem);
-      font-weight: 400;
-      line-height: 1.65;
+      line-height: 1.7;
       color: var(--text-muted);
       margin: 0;
     }
 
-    .about-sub-statement strong {
+    .about-story-p strong {
       font-weight: 600;
       color: var(--text-main);
     }
 
+    /* Glowing Capability Pills Bar */
+    .about-skills-glow-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .glow-skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      color: var(--text-main);
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .glow-skill-pill strong {
+      font-weight: 600;
+    }
+
+    .glow-skill-pill:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 15px rgba(208, 255, 113, 0.2);
+    }
+
+    .glow-skill-icon {
+      font-size: 1rem;
+    }
+
+    /* Quick Details Grid */
     .about-details-table {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
       margin-bottom: 2.25rem;
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      position: relative;
+    }
+
+    .about-details-table.glow-border-box {
+      border-color: rgba(208, 255, 113, 0.2);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 0 20px rgba(208, 255, 113, 0.06);
     }
 
     .about-detail-item {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.25rem;
     }
 
     .detail-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--text-muted);
+      font-weight: 600;
     }
 
     .detail-val {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-main);
     }
 
-    .detail-val a:hover {
+    .glow-link {
       color: var(--accent);
+      transition: text-shadow 0.25s, color 0.25s;
+    }
+
+    .glow-link:hover {
+      text-shadow: 0 0 12px var(--accent-glow);
       text-decoration: underline;
     }
 
-    /* 3 Stat Counter Cards Grid */
+    .available-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #22c55e;
+    }
+
+    .live-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulseDot 1.8s infinite;
+    }
+
+    /* Action Buttons Row */
+    .about-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill-primary.glow-btn-pulse {
+      background: var(--accent);
+      color: #09090b;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 20px var(--accent-glow);
+      transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+    }
+
+    .btn-pill-primary.glow-btn-pulse:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), 0 0 35px var(--accent);
+    }
+
+    /* Right Card Dock Zone */
+    .about-card-dock-zone {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 480px;
+    }
+
+    .card-dock-ambient-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 360px;
+      height: 480px;
+      border-radius: 32px;
+      background: radial-gradient(circle, rgba(208, 255, 113, 0.16) 0%, rgba(208, 255, 113, 0.04) 50%, transparent 75%);
+      filter: blur(35px);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulseAura 4s infinite ease-in-out;
+    }
+
+    @keyframes pulseAura {
+      0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(0.96); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+    }
+
+    .about-right-spacer {
+      width: 320px;
+      height: 440px;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* 3 Stat Counter Cards Grid with Ambient Glow */
     .stats-card-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      margin-top: 4rem;
+      margin-top: 4.5rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .stat-card {
+    .stat-card.stat-card-glow {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px solid rgba(208, 255, 113, 0.15);
       border-radius: 20px;
       padding: 2.25rem 1.5rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
       transition: transform 0.35s var(--ease-spring), box-shadow 0.35s, border-color 0.35s;
     }
 
-    .stat-card:hover {
+    .stat-card.stat-card-glow:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 0 25px rgba(208, 255, 113, 0.22);
       border-color: var(--accent);
     }
 
-    .stat-number {
+    .stat-glow-radial {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 70px;
+      background: radial-gradient(circle at top, rgba(208, 255, 113, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .stat-number.glow-num {
       font-family: var(--font-display);
       font-size: clamp(3.2rem, 5vw, 4.5rem);
       font-weight: 700;
       color: var(--accent);
       line-height: 1;
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(208, 255, 113, 0.35);
     }
 
     .stat-title {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--text-main);
-      line-height: 1.35;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1080px) {
+      .about-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .about-left-column {
+        max-width: 100%;
+      }
+      .about-card-dock-zone {
+        display: none;
+      }
+      .stats-card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-top: 3rem;
+      }
     }
 
     /* ==========================================================================
@@ -1948,35 +2169,53 @@
        ABOUT ME SECTION (UNIFIED & REDESIGNED IN PLACE OF SERVICES)
        ========================================================================== -->
       <section class="about-section-wrap" id="about">
+        <!-- Ambient Background Glow -->
+        <div class="about-ambient-glow" aria-hidden="true"></div>
+
         <div class="container">
           
           <div class="about-grid-layout">
             
-            <!-- Left Narrative Column: Authentic Bold Portavia Typography -->
+            <!-- Left Narrative & Architectural Philosophy Column -->
             <div class="about-left-column">
               
-              <div class="section-header" style="margin-bottom: 2rem;">
-                <h2 class="section-title" style="font-size: clamp(3.2rem, 7vw, 5.2rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 1.5rem;">
-                  About me
-                </h2>
+              <!-- Glowing Eyebrow Pill -->
+              <div class="about-badge-glow">
+                <span class="about-live-dot"></span>
+                <span>JAVA BACKEND ARCHITECT &bull; HYDERABAD, INDIA</span>
               </div>
               
-              <div class="about-editorial-text">
-                <p class="about-lead-statement">
-                  Hi, I'm <strong>Yoshith</strong> &mdash; a Java backend engineer and microservices developer passionate about building <strong>scalable, high-throughput systems</strong>, rock-solid <strong>enterprise security layers</strong>, and high-performance databases.
+              <!-- Massive Bold Display Title: Portavia Style ABOUT ME. -->
+              <h2 class="about-massive-heading">
+                ABOUT <span class="about-glow-text">ME</span><span class="about-dot-accent">.</span>
+              </h2>
+              
+              <!-- High-Impact Bold Manifesto Headline -->
+              <h3 class="about-bold-manifesto">
+                ENGINEERING <span class="manifesto-bold-word">HIGH-CONCURRENCY</span> DISTRIBUTED BACKENDS WITH <span class="manifesto-bold-word">SUB-15MS</span> EFFICIENCY.
+              </h3>
+              
+              <!-- Editorial Punchy Narrative with Bold Accents -->
+              <div class="about-editorial-story">
+                <p class="about-story-p">
+                  I don't just assemble endpoints &mdash; I engineer resilient, high-throughput backend infrastructure. My core specialization focuses on <strong>Spring Boot 3</strong>, <strong>distributed microservices</strong>, <strong>Redis multi-tier caching</strong>, and <strong>MySQL transactional tuning</strong>.
                 </p>
                 
-                <p class="about-sub-statement">
-                  With production experience in enterprise software, my engineering focus centers on <strong>clean architecture</strong>, stateless <strong>JWT authentication</strong>, dynamic <strong>RBAC access control</strong>, and <strong>MySQL query optimization</strong> that eliminates latency bottlenecks under high peak loads.
-                </p>
-
-                <p class="about-sub-statement">
-                  I believe in engineering software that runs predictably: <strong>decoupling service boundaries</strong> with strict DTO contracts, implementing resilient <strong>exception handling</strong>, and adopting <strong>automated testing</strong> to guarantee zero-defect deployments.
+                <p class="about-story-p">
+                  I treat latency as a critical defect and security as non-negotiable. From designing <strong>stateless JWT authorization with granular RBAC</strong> to eliminating database query bottlenecks that slashed latency by <strong>40%</strong>, every system I build is structured for fail-safe stability under enterprise workloads.
                 </p>
               </div>
 
-              <!-- Quick Snapshot Details Grid -->
-              <div class="about-details-table">
+              <!-- Glowing Capability Highlights Bar -->
+              <div class="about-skills-glow-bar">
+                <div class="glow-skill-pill"><span class="glow-skill-icon">⚡</span> <strong>Spring Boot 3 Microservices</strong></div>
+                <div class="glow-skill-pill"><span class="glow-skill-icon">🛡️</span> <strong>Stateless JWT &amp; Role RBAC</strong></div>
+                <div class="glow-skill-pill"><span class="glow-skill-icon">🚀</span> <strong>Redis Caching &amp; Low Latency</strong></div>
+                <div class="glow-skill-pill"><span class="glow-skill-icon">🧪</span> <strong>Clean CSR &amp; Mockito Tests</strong></div>
+              </div>
+
+              <!-- Quick Snapshot Details Grid with Glowing Border Accent -->
+              <div class="about-details-table glow-border-box">
                 <div class="about-detail-item">
                   <span class="detail-label">Experience</span>
                   <span class="detail-val">1+ Years Production Systems</span>
@@ -1991,59 +2230,65 @@
                 </div>
                 <div class="about-detail-item">
                   <span class="detail-label">Direct Email</span>
-                  <span class="detail-val"><a href="mailto:yoshith.nagidi@gmail.com">yoshith.nagidi@gmail.com</a></span>
+                  <span class="detail-val"><a href="mailto:yoshith.nagidi@gmail.com" class="glow-link">yoshith.nagidi@gmail.com</a></span>
                 </div>
                 <div class="about-detail-item">
                   <span class="detail-label">Education</span>
                   <span class="detail-val">B.Tech in Electronics &amp; Communication</span>
                 </div>
                 <div class="about-detail-item">
-                  <span class="detail-label">Availability</span>
-                  <span class="detail-val" style="color: var(--status-green);">&bull; Available for Full-Time Roles</span>
+                  <span class="detail-label">Status</span>
+                  <span class="detail-val available-status"><span class="live-status-dot"></span> Available for Engineering Roles</span>
                 </div>
               </div>
 
-              <!-- Action Buttons -->
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem;">
-                <a href="https://linkedin.com/in/yoshith-nagidi-0877b8252" target="_blank" rel="noopener noreferrer" class="btn-pill-primary">
+              <!-- Action Buttons with Radiant Glow -->
+              <div class="about-actions-row">
+                <a href="https://linkedin.com/in/yoshith-nagidi-0877b8252" target="_blank" rel="noopener noreferrer" class="btn-pill-primary glow-btn-pulse">
                   <span>LinkedIn Profile</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
-                <a href="#contact" class="btn-pill-secondary">
-                  <span>Get in Touch</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <a href="https://github.com/Yoshith-1808" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary">
+                  <span>GitHub Profile</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 </a>
               </div>
 
             </div>
 
-            <!-- Right Spacer: Holds exact visual space for 3D Floating Avatar Card -->
-            <div class="about-right-spacer" aria-hidden="true"></div>
+            <!-- Right Column: Card Dock Zone with Glowing Ambient Aura -->
+            <div class="about-card-dock-zone">
+              <div class="card-dock-ambient-glow" aria-hidden="true"></div>
+              <div class="about-right-spacer" aria-hidden="true"></div>
+            </div>
 
           </div>
 
-          <!-- 3 Stat Counter Cards Grid -->
+          <!-- 3 Stat Counter Cards Grid with Ambient Glow -->
           <div class="stats-card-grid">
             
-            <div class="stat-card">
-              <div class="stat-number" data-target="1">1+</div>
+            <div class="stat-card stat-card-glow">
+              <div class="stat-glow-radial" aria-hidden="true"></div>
+              <div class="stat-number glow-num" data-target="1">1+</div>
               <div class="stat-title">Years of Experience Delivering Production Services</div>
             </div>
 
-            <div class="stat-card">
-              <div class="stat-number" data-target="5">5+</div>
+            <div class="stat-card stat-card-glow">
+              <div class="stat-glow-radial" aria-hidden="true"></div>
+              <div class="stat-number glow-num" data-target="5">5+</div>
               <div class="stat-title">Spring Boot Microservices Engineered &amp; Scaled</div>
             </div>
 
-            <div class="stat-card">
-              <div class="stat-number" data-target="40">40%</div>
+            <div class="stat-card stat-card-glow">
+              <div class="stat-glow-radial" aria-hidden="true"></div>
+              <div class="stat-number glow-num" data-target="40">40%</div>
               <div class="stat-title">API Response Latency Reduction via Index Tuning</div>
             </div>
 
           </div>
 
         </div>
-      </section></section>
+      </section>
 
       <!-- ==========================================================================
            PORTAVIA 3D STACKING FEATURED PROJECTS (EVERNOTE MODERN MINIMAL CARDS)
@@ -2644,35 +2889,49 @@
       const vh = window.innerHeight;
 
       const aboutTop = aboutSec ? aboutSec.offsetTop : vh;
-      const projectsTop = projectsSec ? projectsSec.offsetTop : vh * 2.2;
+      const aboutHeight = aboutSec ? aboutSec.offsetHeight : vh;
 
-      // Ensure stickyWrap height spans cleanly until Featured Projects
-      if (stickyWrap && projectsSec) {
-        stickyWrap.style.height = (projectsTop + 20) + 'px';
+      // The exact vertical center of the About Me section
+      const aboutSectionCenter = aboutTop + (aboutHeight * 0.5);
+
+      // The exact scroll position where the middle of About Me is centered in the viewport
+      const dockScrollPoint = Math.max(1, aboutSectionCenter - (vh * 0.5));
+
+      // Dynamically lock stickyWrap height so the sticky container hits the bottom
+      // exactly when scroll reaches the middle of About Me, stopping the card right there!
+      if (stickyWrap && aboutSec) {
+        stickyWrap.style.height = (dockScrollPoint + vh) + 'px';
       }
 
-      // Stage 1: In Hero (0 -> aboutTop * 0.45)
-      // Card slides smoothly from center to right (x: 0 -> 340) and starts turning (rotY: 0 -> 150)
-      const stage1Boundary = Math.max(1, aboutTop * 0.45);
-      const p1 = Math.max(0, Math.min(1, scrollY / stage1Boundary));
-      
-      // Stage 2: Through About Me (stage1Boundary -> projectsTop)
-      // Card completes its full 180° turn (rotY: 150 -> 340°), displaying the flatlay & signature
-      const stage2Distance = Math.max(1, projectsTop - stage1Boundary);
-      const p2 = Math.max(0, Math.min(1, (scrollY - stage1Boundary) / stage2Distance));
+      const desktopOffset = Math.min(window.innerWidth * 0.26, 335);
 
-      const desktopOffset = Math.min(window.innerWidth * 0.28, 350);
-
-      if (scrollY <= stage1Boundary) {
-        targetX = p1 * desktopOffset;
-        targetRotate = p1 * 10;
-        targetRotateY = p1 * 150;
-        targetScale = 1 - (p1 * 0.1);
+      if (scrollY <= 0) {
+        // Top of Hero: centered portrait selfie
+        targetX = 0;
+        targetRotate = 0;
+        targetRotateY = 0;
+        targetScale = 1;
+      } else if (scrollY < aboutTop * 0.45) {
+        // Stage 1: Gliding towards right and starting smooth tilt
+        const p1 = Math.max(0, Math.min(1, scrollY / (aboutTop * 0.45)));
+        targetX = p1 * (desktopOffset * 0.5);
+        targetRotate = p1 * 8;
+        targetRotateY = p1 * 90;
+        targetScale = 1 - (p1 * 0.05);
+      } else if (scrollY < dockScrollPoint) {
+        // Stage 2: Gliding into the middle of About Me, completing 340° flip to flatlay
+        const p2 = Math.max(0, Math.min(1, (scrollY - aboutTop * 0.45) / Math.max(1, dockScrollPoint - aboutTop * 0.45)));
+        targetX = (desktopOffset * 0.5) + (p2 * desktopOffset * 0.5);
+        targetRotate = 8 * (1 - p2); // 8 -> 0 upright
+        targetRotateY = 90 + (p2 * 250); // 90 -> 340° (revealing the signed flatlay)
+        targetScale = 0.95 + (p2 * 0.05); // 0.95 -> 1.0 full size
       } else {
+        // STAGE 3: AT AND PAST THE MIDDLE OF ABOUT ME:
+        // THE CARD COMPLETELY STOPS MOVING AND REMAINS FIRMLY DOCKED!
         targetX = desktopOffset;
-        targetRotate = 10 - (p2 * 5); // 10 -> 5
-        targetRotateY = 150 + (p2 * 190); // 150 -> 340 degrees (smooth 180 flip)!
-        targetScale = 0.9 + (p2 * 0.1); // 0.9 -> 1.0
+        targetRotate = 0;
+        targetRotateY = 340;
+        targetScale = 1.0;
       }
     }
 
