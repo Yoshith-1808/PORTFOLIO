@@ -825,19 +825,38 @@
       pointer-events: none;
     }
 
-    .about-bio-lead {
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: var(--text-main);
-      line-height: 1.55;
-      margin-bottom: 1.5rem;
+    .about-editorial-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+      margin-bottom: 2.5rem;
     }
 
-    .about-bio-text {
-      font-size: 1.02rem;
+    .about-lead-statement {
+      font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+      font-weight: 400;
+      line-height: 1.45;
       color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .about-lead-statement strong {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .about-sub-statement {
+      font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .about-sub-statement strong {
+      font-weight: 600;
+      color: var(--text-main);
     }
 
     .about-details-table {
@@ -1776,12 +1795,6 @@
             <span class="nav-link-back">Home</span>
           </span>
         </a>
-        <a href="#service" class="nav-link-3d">
-          <span class="nav-link-inner">
-            <span class="nav-link-front">Services</span>
-            <span class="nav-link-back">Services</span>
-          </span>
-        </a>
         <a href="#about" class="nav-link-3d">
           <span class="nav-link-inner">
             <span class="nav-link-front">About</span>
@@ -1841,7 +1854,6 @@
   <!-- Mobile Drawer Menu -->
   <div class="mobile-drawer" id="mobileDrawer">
     <a href="#hero" class="mobile-nav-link" onclick="closeDrawer()">Home</a>
-    <a href="#service" class="mobile-nav-link" onclick="closeDrawer()">Services</a>
     <a href="#about" class="mobile-nav-link" onclick="closeDrawer()">About</a>
     <a href="#projects" class="mobile-nav-link" onclick="closeDrawer()">Projects</a>
     <a href="#socials" class="mobile-nav-link" onclick="closeDrawer()">Socials</a>
@@ -1933,260 +1945,79 @@
       </section>
 
       <!-- ==========================================================================
-           "WHAT I CAN DO FOR YOU" SERVICES SECTION
-           Left: Services Accordion | Right: The 3D Card rotates here at 150deg & 10deg tilt!
-           ========================================================================== -->
-      <section class="service-section-wrap" id="service">
-        <div class="container">
-          <div class="service-grid-layout">
-            
-            <!-- Left Column: Services Accordion -->
-            <div class="service-left-column">
-              <div class="section-header">
-                <h2 class="section-title">what I can do for you</h2>
-                <p class="section-subtitle">
-                  As a Java backend engineer, I build secure, high-throughput microservices and robust cloud-ready architectures that scale seamlessly.
-                </p>
-              </div>
-
-              <div class="services-accordion-list">
-                
-                <!-- Service Item 01 -->
-                <div class="accordion-item active">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-left">
-                      <span class="accordion-number">01.</span>
-                      <h3 class="accordion-title">Spring Boot &amp; Microservices</h3>
-                    </div>
-                    <div class="accordion-icon-wrap">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="accordion-body">
-                    <div class="accordion-content-inner">
-                      <p class="accordion-lead">
-                        End-to-end design and delivery of modular microservices built around clean service boundaries to enable independent scaling and zero-downtime releases.
-                      </p>
-                      <ul class="accordion-bullets">
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Controller-Service-Repository (CSR) clean architecture pattern</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Standardized RESTful request/response contracts &amp; DTO layers</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Centralized exception handling &amp; multi-layer input validation</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Loose coupling &amp; modular services for parallel cross-team delivery</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Service Item 02 -->
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-left">
-                      <span class="accordion-number">02.</span>
-                      <h3 class="accordion-title">JWT Auth &amp; RBAC Security Layer</h3>
-                    </div>
-                    <div class="accordion-icon-wrap">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="accordion-body">
-                    <div class="accordion-content-inner">
-                      <p class="accordion-lead">
-                        Enterprise-grade stateless security layers that eliminate session storage overhead and safeguard multi-tenant systems.
-                      </p>
-                      <ul class="accordion-bullets">
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Stateless JWT token verification eliminating shared session stores</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Dynamic Role-Based Access Control (RBAC) permission scoping</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Custom Spring Security filters enforcing route authorization</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Track record of zero authentication production vulnerabilities</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Service Item 03 -->
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-left">
-                      <span class="accordion-number">03.</span>
-                      <h3 class="accordion-title">MySQL &amp; Query Optimization</h3>
-                    </div>
-                    <div class="accordion-icon-wrap">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="accordion-body">
-                    <div class="accordion-content-inner">
-                      <p class="accordion-lead">
-                        Data modeling, indexing strategies, and query rewriting to eliminate database bottlenecks and accelerate response latencies under heavy production load.
-                      </p>
-                      <ul class="accordion-bullets">
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Composite indexing &amp; query rewriting delivering 40% latency cuts</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Eliminating N+1 queries using JPA entity graphs &amp; fetch joins</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Relational schema design, normalization, &amp; foreign key constraints</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Connection pooling &amp; transaction management tuning</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Service Item 04 -->
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-left">
-                      <span class="accordion-number">04.</span>
-                      <h3 class="accordion-title">Automated Testing &amp; CI/CD</h3>
-                    </div>
-                    <div class="accordion-icon-wrap">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="accordion-body">
-                    <div class="accordion-content-inner">
-                      <p class="accordion-lead">
-                        Reliable automated test suites with JUnit and Mockito, paired with strict Git branching strategies that align releases with two-week sprint cadences.
-                      </p>
-                      <ul class="accordion-bullets">
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Automated test suites verified across 50+ integration scenarios</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Unit testing &amp; mock injection with Mockito for isolated validation</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Rigorous peer code reviews identifying anti-patterns prior to merge</span>
-                        </li>
-                        <li class="accordion-bullet-item">
-                          <span class="bullet-check-icon">✦</span>
-                          <span>Git-based feature branching &amp; release packaging with Maven</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-            <!-- Right Spacer: Holds space for the floating sticky 3D card -->
-            <div class="service-right-spacer" aria-hidden="true"></div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================================================
-           ABOUT ME SECTION & STAT COUNTER CARDS
-           Left: Bio & Contact | Right: The 3D Card rotates to 340deg!
-           ========================================================================== -->
+       ABOUT ME SECTION (UNIFIED & REDESIGNED IN PLACE OF SERVICES)
+       ========================================================================== -->
       <section class="about-section-wrap" id="about">
         <div class="container">
           
           <div class="about-grid-layout">
             
-            <!-- Left Bio Column -->
+            <!-- Left Narrative Column: Authentic Bold Portavia Typography -->
             <div class="about-left-column">
-              <div class="section-header" style="margin-bottom: 1.5rem;">
-                <h2 class="section-title">About me</h2>
+              
+              <div class="section-header" style="margin-bottom: 2rem;">
+                <h2 class="section-title" style="font-size: clamp(3.2rem, 7vw, 5.2rem); text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 1.5rem;">
+                  About me
+                </h2>
               </div>
               
-              <p class="about-bio-lead">
-                Hi, I'm Yoshith — a Java backend engineer and microservices developer passionate about architecting secure, reliable, and high-performance server-side systems.
-              </p>
+              <div class="about-editorial-text">
+                <p class="about-lead-statement">
+                  Hi, I'm <strong>Yoshith</strong> &mdash; a Java backend engineer and microservices developer passionate about building <strong>scalable, high-throughput systems</strong>, rock-solid <strong>enterprise security layers</strong>, and high-performance databases.
+                </p>
+                
+                <p class="about-sub-statement">
+                  With production experience in enterprise software, my engineering focus centers on <strong>clean architecture</strong>, stateless <strong>JWT authentication</strong>, dynamic <strong>RBAC access control</strong>, and <strong>MySQL query optimization</strong> that eliminates latency bottlenecks under high peak loads.
+                </p>
 
-              <p class="about-bio-text">
-                Over the past year delivering Spring Boot microservices on client deployments at Revature, 
-                I have specialized in building robust RESTful architectures with standardized contracts, 
-                engineering zero-defect authentication layers with JWT and granular RBAC, and optimizing relational 
-                MySQL schemas to achieve 40% speedups under production loads.
-              </p>
+                <p class="about-sub-statement">
+                  I believe in engineering software that runs predictably: <strong>decoupling service boundaries</strong> with strict DTO contracts, implementing resilient <strong>exception handling</strong>, and adopting <strong>automated testing</strong> to guarantee zero-defect deployments.
+                </p>
+              </div>
 
+              <!-- Quick Snapshot Details Grid -->
               <div class="about-details-table">
                 <div class="about-detail-item">
+                  <span class="detail-label">Experience</span>
+                  <span class="detail-val">1+ Years Production Systems</span>
+                </div>
+                <div class="about-detail-item">
+                  <span class="detail-label">Specialization</span>
+                  <span class="detail-val">Java &bull; Spring Boot 3 &bull; Microservices</span>
+                </div>
+                <div class="about-detail-item">
                   <span class="detail-label">Location</span>
-                  <span class="detail-val">Hyderabad, India</span>
+                  <span class="detail-val">Hyderabad, India (Remote / Relocation)</span>
                 </div>
                 <div class="about-detail-item">
-                  <span class="detail-label">Phone</span>
-                  <span class="detail-val"><a href="tel:+918121969699">+91 81219 69699</a></span>
-                </div>
-                <div class="about-detail-item">
-                  <span class="detail-label">Email</span>
+                  <span class="detail-label">Direct Email</span>
                   <span class="detail-val"><a href="mailto:yoshith.nagidi@gmail.com">yoshith.nagidi@gmail.com</a></span>
                 </div>
                 <div class="about-detail-item">
                   <span class="detail-label">Education</span>
-                  <span class="detail-val">B.Tech in Electronics & Communication</span>
+                  <span class="detail-val">B.Tech in Electronics &amp; Communication</span>
+                </div>
+                <div class="about-detail-item">
+                  <span class="detail-label">Availability</span>
+                  <span class="detail-val" style="color: var(--status-green);">&bull; Available for Full-Time Roles</span>
                 </div>
               </div>
 
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <!-- Action Buttons -->
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem;">
                 <a href="https://linkedin.com/in/yoshith-nagidi-0877b8252" target="_blank" rel="noopener noreferrer" class="btn-pill-primary">
                   <span>LinkedIn Profile</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
-                <a href="https://github.com/Yoshith-1808" target="_blank" rel="noopener noreferrer" class="btn-pill-secondary">
-                  <span>GitHub</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
+                <a href="#contact" class="btn-pill-secondary">
+                  <span>Get in Touch</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </a>
               </div>
 
             </div>
 
-            <!-- Right Spacer: Holds space for the docking 3D card -->
+            <!-- Right Spacer: Holds exact visual space for 3D Floating Avatar Card -->
             <div class="about-right-spacer" aria-hidden="true"></div>
 
           </div>
@@ -2209,12 +2040,10 @@
               <div class="stat-title">API Response Latency Reduction via Index Tuning</div>
             </div>
 
-            
-
           </div>
 
         </div>
-      </section>
+      </section></section>
 
       <!-- ==========================================================================
            PORTAVIA 3D STACKING FEATURED PROJECTS (EVERNOTE MODERN MINIMAL CARDS)
@@ -2749,8 +2578,8 @@
     const avatarWrap = document.getElementById('stickyAvatarWrap');
     const heroLeft = document.getElementById('heroHeadingLeft');
     const heroRight = document.getElementById('heroHeadingRight');
-    const serviceSec = document.getElementById('service');
     const aboutSec = document.getElementById('about');
+    const projectsSec = document.getElementById('projects');
 
     let currentX = 0, currentRotate = 0, currentRotateY = 0, currentScale = 1;
     let targetX = 0, targetRotate = 0, targetRotateY = 0, targetScale = 1;
@@ -2814,37 +2643,39 @@
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
       const vh = window.innerHeight;
 
-      // Stage 1: In Hero (0 -> 100vh)
-      // Card transitions from (x:0, rot:0, rotY:0) to (x:340, rot:10, rotY:150, scale:0.9)
-      // Stage 2: In Service -> About (100vh -> 200vh)
-      // Card transitions from (x:340, rot:10, rotY:150) to (x:340, rot:5, rotY:340, scale:1)
-      const serviceTop = serviceSec ? serviceSec.offsetTop : vh;
-      const aboutTop = aboutSec ? aboutSec.offsetTop : vh * 2;
+      const aboutTop = aboutSec ? aboutSec.offsetTop : vh;
+      const projectsTop = projectsSec ? projectsSec.offsetTop : vh * 2.2;
 
-      // Distance to Service
-      const p1 = Math.max(0, Math.min(1, scrollY / (serviceTop - 100)));
+      // Ensure stickyWrap height spans cleanly until Featured Projects
+      if (stickyWrap && projectsSec) {
+        stickyWrap.style.height = (projectsTop + 20) + 'px';
+      }
+
+      // Stage 1: In Hero (0 -> aboutTop * 0.45)
+      // Card slides smoothly from center to right (x: 0 -> 340) and starts turning (rotY: 0 -> 150)
+      const stage1Boundary = Math.max(1, aboutTop * 0.45);
+      const p1 = Math.max(0, Math.min(1, scrollY / stage1Boundary));
       
-      // Distance from Service to About
-      const p2 = Math.max(0, Math.min(1, (scrollY - serviceTop) / (aboutTop - serviceTop)));
+      // Stage 2: Through About Me (stage1Boundary -> projectsTop)
+      // Card completes its full 180° turn (rotY: 150 -> 340°), displaying the flatlay & signature
+      const stage2Distance = Math.max(1, projectsTop - stage1Boundary);
+      const p2 = Math.max(0, Math.min(1, (scrollY - stage1Boundary) / stage2Distance));
 
       const desktopOffset = Math.min(window.innerWidth * 0.28, 350);
 
-      if (scrollY <= serviceTop) {
-        // Interpolate Hero -> Service
+      if (scrollY <= stage1Boundary) {
         targetX = p1 * desktopOffset;
         targetRotate = p1 * 10;
         targetRotateY = p1 * 150;
         targetScale = 1 - (p1 * 0.1);
       } else {
-        // Interpolate Service -> About
         targetX = desktopOffset;
         targetRotate = 10 - (p2 * 5); // 10 -> 5
-        targetRotateY = 150 + (p2 * 190); // 150 -> 340 degrees!
+        targetRotateY = 150 + (p2 * 190); // 150 -> 340 degrees (smooth 180 flip)!
         targetScale = 0.9 + (p2 * 0.1); // 0.9 -> 1.0
       }
     }
 
-    // High performance physics loop
     function animateCardLoop() {
       updateDeckCards();
       calculateTargets();
